@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Collaborateur</title>
+</head>
+<body>
+
+<h2>Add Collaborateur</h2>
+
+<form id="collaborateurForm">
+    <!-- Matricule -->
+    <label for="matricule">Matricule:</label>
+    <input type="number" name="matricule" id="matricule" required>
+    <br>
+
+    <!-- Nom -->
+    <label for="nom">Nom:</label>
+    <input type="text" name="nom" id="nom" required>
+    <br>
+
+    <!-- Prenom -->
+    <label for="prenom">Prenom:</label>
+    <input type="text" name="prenom" id="prenom" required>
+    <br>
+
+    <!-- Abreviation -->
+    <label for="abreviation">Abreviation:</label>
+    <input type="text" name="abreviation" id="abreviation">
+    <br>
+
+    <!-- Ancien Manager -->
+    <label for="ancienManager">Ancien Manager:</label>
+    <input type="text" name="ancienManager" id="ancienManager">
+    <br>
+
+    <!-- Manager Actuel -->
+    <label for="managerActuel">Manager Actuel:</label>
+    <input type="text" name="managerActuel" id="managerActuel">
+    <br>
+
+    <!-- Sexe -->
+    <label for="sexe">Sexe:</label>
+    <select name="sexe" id="sexe">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+    </select>
+    <br>
+
+    <!-- Site -->
+    <label for="site">Site:</label>
+    <input type="text" name="site" id="site">
+    <br>
+
+    <!-- BU -->
+    <label for="bu">BU:</label>
+    <input type="text" name="bu" id="bu" required>
+    <br>
+
+    <!-- Date Embauche -->
+    <label for="dateEmbauche">Date Embauche:</label>
+    <input type="date" name="dateEmbauche" id="dateEmbauche">
+    <br>
+
+    <!-- Mois BAP -->
+    <label for="moisBap">Mois BAP:</label>
+    <input type="text" name="moisBap" id="moisBap">
+    <br>
+
+    <!-- Date Depart -->
+    <label for="dateDepart">Date Depart:</label>
+    <input type="date" name="dateDepart" id="dateDepart">
+    <br>
+
+    <!-- Poste App -->
+    <label for="posteApp">Poste App:</label>
+    <input type="text" name="posteApp" id="posteApp">
+    <br>
+
+    <!-- Poste Actuel -->
+    <label for="posteActuel">Poste Actuel:</label>
+    <input type="text" name="posteActuel" id="posteActuel">
+    <br>
+
+    <!-- Salaire -->
+    <label for="salaire">Salaire:</label>
+    <input type="number" step="0.01" name="salaire" id="salaire">
+    <br>
+
+    <!-- Ancien Collaborateur (Checkbox) -->
+    <input type="checkbox" name="ancienCollaborateur" id="ancienCollaborateur">
+    <label for="ancienCollaborateur">Ancien Collaborateur</label>
+    <br>
+
+    <!-- Participation Seminaire (Checkbox) -->
+    <input type="checkbox" name="participationSeminaire" id="participationSeminaire">
+    <label for="participationSeminaire">Participation Seminaire</label>
+    <br>
+
+    <!-- Date Participation -->
+    <label for="dateParticipation">Date Participation:</label>
+    <input type="date" name="dateParticipation" id="dateParticipation">
+    <br>
+
+    <!-- Submit Button -->
+    <input type="button" value="Add Collaborateur" onclick="submitForm()">
+</form>
+
+<script>
+   function submitForm() {
+    const formData = new FormData(document.getElementById('collaborateurForm'));
+
+    fetch('/form', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        alert(data);  // Display a success alert to the user
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');  // Display an error alert
+    });
+}
+
+</script>
+
+</body>
+</html>
